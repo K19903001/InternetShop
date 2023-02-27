@@ -1,0 +1,21 @@
+.page_title {
+text-align: center;
+
+}
+img {
+
+    max-width: 300px;
+    max-height: 200px;
+}
+.userInfo {
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+}
+.user_card {
+    display: flex;
+    justify-content: center;
+    text-align: left;
+    margin-top: 50px;
+}
+

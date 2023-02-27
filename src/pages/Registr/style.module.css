@@ -1,0 +1,7 @@
+.form_registr{
+display: flex;
+align-items: center;
+padding-left: 100px;
+padding-top: 100px;
+flex-direction: column;
+}

@@ -11,3 +11,24 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.layout{
+  height: 100vh;
+}
+
+.btn_reg {
+  float: right;
+}
+
+header {
+  position: sticky;
+  top: 0; 
+  z-Index: 10;
+  width: 100%;
+}
+Footer {
+  text-align: center;
+   position: fixed;
+   bottom: 0;
+   background: rgb(16, 18, 18);
+   width: 100%; 
+  }
