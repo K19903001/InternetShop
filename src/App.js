@@ -5,7 +5,6 @@ import { Header } from "./components/Layout/Header/Header";
 import { Footer } from "./components/Layout/Footer/Footer";
 import { PetsShopContext } from "./Context/Context.js"; 
 
-
 function App() {
  
   const [isAuth, setIsAuth] = useState(false);

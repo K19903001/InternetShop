@@ -5,7 +5,6 @@ import { getAllProducts } from '../../api/api';
 
 export function Product() {
 
-
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["getAllProducts"],
     queryFn: () => getAllProducts(),

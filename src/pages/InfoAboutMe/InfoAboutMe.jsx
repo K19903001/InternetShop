@@ -13,9 +13,9 @@ export function InfoAboutMe() {
   if (isLoading) return (<Spinner />)
 
   if (isError) {
-    return <p>Произошла ошибка: {error}</p>
+    return <p className="error">{error.message}</p>;
   }
-
+  
   return (
     <div className={style.page_title}><h1>Страница пользователя</h1>
         <div className={style.user_card}>

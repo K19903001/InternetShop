@@ -1,17 +1,11 @@
 import { Card, Space } from 'antd';
 import style from './card.module.css'
-import { useNavigate } from "react-router-dom";
 
 export function Catalog({ products }) {
   const { Meta } = Card;
-  const navigate = useNavigate();
-  
-
+   
   return (
-
-
-
-    <Space direction='horizontal' align='center' wrap>
+   <Space direction='horizontal' align='center' wrap>
       {products.map(product => {
         return <Card className={style.card_prod}
           cover={
