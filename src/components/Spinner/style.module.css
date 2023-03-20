@@ -3,6 +3,7 @@
     position: relative;
     width: 80px;
     height: 80px;
+    margin: 150px;
   }
   .lds-hourglass:after {
     content: " ";
@@ -10,7 +11,7 @@
     border-radius: 50%;
     width: 0;
     height: 0;
-    margin: 8px;
+    
     box-sizing: border-box;
     border: 32px solid #40bd42;
     border-color: #903131 transparent #2e53c3 transparent;

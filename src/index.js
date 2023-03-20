@@ -7,11 +7,10 @@ import {
 } from "react-router-dom";
 import App from './App';
 import { Product } from './pages/Products/Products';
-import { Registr } from './pages/Registr/Registr';
-import { Contacts } from './pages/Contacts/Contacts';
-import { User } from './pages/User/User';
+import { Registration } from './pages/Registration/Registration';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-
+import { InfoAboutMe } from './pages/InfoAboutMe/InfoAboutMe';
+import { Signin } from './pages/Signin/Signin';
 
 const queryClient = new QueryClient()
 const router = createBrowserRouter([
@@ -24,17 +23,17 @@ const router = createBrowserRouter([
         element: <Product />
       },
       {
-        path: 'registr',
-        element: <Registr />,
+        path: 'registration',
+        element: <Registration />,
       },
       {
-        path: 'contacts',
-        element: <Contacts />,
+        path: 'myPage',
+        element: <InfoAboutMe />,
       },
       {
-        path: 'user',
-        element: <User />,
-      }
+        path: "/signin",
+        element: <Signin />
+      },
     ]
   },
   

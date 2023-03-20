@@ -1,0 +1,33 @@
+header {
+    display: flex;
+    width: 100%;
+    height: 10vh;
+    background-color: rgb(19, 70, 37);
+    color: rgb(206, 36, 36);
+    position: fixed;
+    z-index: 1;
+    box-shadow: 3px 3px 5px rgb(0 0 0 / 50%);
+    align-items: center;
+    justify-content: flex-end;
+    gap: 900px;
+ }
+
+.btn_reg {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   gap: 10px;
+   padding-right: 20px;
+
+ }
+
+.hederMenu {
+    display: flex;
+    list-style: none;
+    margin: 25px;
+    gap: 10px;
+ }
+
+  .hederMenu a {
+    text-decoration: none;
+ }

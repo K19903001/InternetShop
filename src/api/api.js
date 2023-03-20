@@ -1,71 +1,129 @@
-class Api {
-  constructor(groupId) {
-  this.url = "https://api.react-learning.ru";
-  this.groupId = groupId
-  }
 
-//  регистрация
- reg(values) {
-  return fetch(`${this.url}/signup`, {
-  method: 'POST',
-  headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      },
-  body: JSON.stringify(values)
-  })
-}
+export const aboutMe = async () => {
+    const response = await fetch(
+      "https://api.react-learning.ru/v2/9-gr/users/me",
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+      }
+    );
+    
+    if (response.ok === false) {
+      const res = await response.json();
+      throw new Error(res.message);
+    }
+  
+    let user = await response.json();
+    return user;
+  };
 
- // авторизация
- auth(values) {
-  return fetch(`${this.url}/signin`, {
-    method: 'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(values)
-  })
-}
-
-// запрос всех пользователей
-  allUsers(token) {
-    return fetch(`${this.url}/v2/${this.groupId}/users`, {
-      method: 'GET',
+  export const signIn = async (values) => {
+    const res = await fetch("https://api.react-learning.ru/signin", {
+      method: "POST",
       headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + token,
+        Accept: "application/json",
+        "Content-Type": "application/json",
       },
-    })
-  }
-
-  // запрос информации обо мне
-  me(token) {
-    return fetch(`${this.url}/v2/${this.groupId}/users/me`, {
-      method: 'GET',
+      body: JSON.stringify(values),
+    });
+  
+    if (res.ok) {
+      const response = await res.json();
+      localStorage.setItem("token", response.token);
+  
+      return true;
+    } else {
+      const response = await res.json();
+      throw new Error(response.message);
+    }
+  };
+  export const getAllProducts = async () => {
+    let response = await fetch("https://api.react-learning.ru/products", {
+      method: "GET",
       headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + token,
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("token"),
       },
-    })
-  }
+    });
+  
+    if (response.ok === false) {
+      const res = await response.json();
+      throw new Error(res.message);
+    }
+  
+    let positions = await response.json();
+    return positions.products;
+  };
 
-  // запрос всех продуктов
-  getProducts(token){
-    return fetch(`${this.url}/products`, {
-      method: 'GET',
+  export const signup = async (values) => {
+    const res = await fetch("https://api.react-learning.ru/signup", {
+      method: "POST",
       headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + token,
+        Accept: "application/json",
+        "Content-Type": "application/json",
       },
-    })
-  }
+      body: JSON.stringify(values),
+    });
+  
+    if (res.ok) {
+      return true;
+    } else {
+      const response = await res.json();
+      throw new Error(response.message);
+    }
+  };
 
-}
+  export const AuthMe= async () => {
+    if (localStorage.getItem("token") === undefined) {
+      return false;
+    }
+  
+    try {
+      let response = await fetch(
+        "https://api.react-learning.ru/v2/9-gr/users/me",
+        {
+          method: "GET",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+        }
+      );
+  
+      if (response.ok === false) {
+        return false;
+      }
+  
+      return true;
+    } catch (error) {
+      return false;
+    }
+  };
 
-
-   const api = new Api ('9-gr');
-   export { api }
+  export const getSomeProduct = async (productID) => {
+    let response = await fetch(
+      `https://api.react-learning.ru/products/${productID}`,
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+      }
+    );
+  
+    if (response.ok === false) {
+      const res = await response.json();
+      throw new Error(res.message);
+    }
+  
+    let product = await response.json();
+    return product;
+  };
