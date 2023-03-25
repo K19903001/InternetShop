@@ -6,11 +6,14 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import App from './App';
-import { Product } from './pages/Products/Products';
+import { Products } from './pages/Products/Products';
 import { Registration } from './pages/Registration/Registration';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { InfoAboutMe } from './pages/InfoAboutMe/InfoAboutMe';
 import { Signin } from './pages/Signin/Signin';
+import { Provider } from 'react-redux'
+import { store } from './redux/store';
+import { NotFound } from './notFound/notFound';
 
 const queryClient = new QueryClient()
 const router = createBrowserRouter([
@@ -20,7 +23,7 @@ const router = createBrowserRouter([
     children: [
             {
         path: 'products',
-        element: <Product />
+        element: <Products />
       },
       {
         path: 'registration',
@@ -34,6 +37,10 @@ const router = createBrowserRouter([
         path: "/signin",
         element: <Signin />
       },
+      {
+        path: "*",
+        element: <NotFound />
+      },
     ]
   },
   
@@ -42,8 +49,10 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+  <Provider store={store}>
   <QueryClientProvider client={queryClient}>
     <RouterProvider router={router} />
     </QueryClientProvider>
+    </Provider>
   </React.StrictMode>
 );

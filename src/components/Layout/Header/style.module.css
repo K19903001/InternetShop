@@ -8,8 +8,8 @@ header {
     z-index: 1;
     box-shadow: 3px 3px 5px rgb(0 0 0 / 50%);
     align-items: center;
-    justify-content: flex-end;
-    gap: 900px;
+    justify-content: center;
+    gap: 420px;
  }
 
 .btn_reg {

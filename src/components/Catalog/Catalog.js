@@ -1,13 +1,12 @@
 import { Card, Space } from 'antd';
 import style from './card.module.css'
 
-export function Catalog({ products }) {
+export function Catalog({ product }) {
   const { Meta } = Card;
    
   return (
    <Space direction='horizontal' align='center' wrap>
-      {products.map(product => {
-        return <Card className={style.card_prod}
+       <Card className={style.card_prod}
           cover={
             <img className={style.card_img}
               alt={product.name}
@@ -20,9 +19,9 @@ export function Catalog({ products }) {
           <li>Цена товара:{product.price}p</li>
           <li>Скидка:{product.discount}%</li>
           </ul>
-          <button  type="button" class="btn btn-outline-warning">В корзну</button>
+          <button  type="button" class="btn btn-outline-warning">В корзину</button>
         </Card>
-      })}
+      
     </Space>
   )
 }

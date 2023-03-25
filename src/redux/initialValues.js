@@ -6,7 +6,8 @@ export const getInitialValues = () => {
   }
 
   return {
-    user: initialUserState
+    user: initialUserState,
+    filter:initialFilterState
   }
 }
 
@@ -21,3 +22,8 @@ export const initialUserState = {
   __v: 0
 }
 
+export const initialFilterState = {
+search: ''
+
+
+}

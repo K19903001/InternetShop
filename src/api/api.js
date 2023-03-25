@@ -41,24 +41,7 @@ export const aboutMe = async () => {
       throw new Error(response.message);
     }
   };
-  export const getAllProducts = async () => {
-    let response = await fetch("https://api.react-learning.ru/products", {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + localStorage.getItem("token"),
-      },
-    });
   
-    if (response.ok === false) {
-      const res = await response.json();
-      throw new Error(res.message);
-    }
-  
-    let positions = await response.json();
-    return positions.products;
-  };
 
   export const signup = async (values) => {
     const res = await fetch("https://api.react-learning.ru/signup", {
@@ -126,4 +109,31 @@ export const aboutMe = async () => {
   
     let product = await response.json();
     return product;
+  };
+
+  export const getAllProductsWithSearch = (search) => {
+    return fetch(`https://api.react-learning.ru/products/search?query=${search}`, {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      }
+    })
+  }
+
+  export const getAllProducts = async () => {
+    let response = await fetch("https://api.react-learning.ru/products", {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+    });
+  
+    if (response.ok === false) {
+      const res = await response.json();
+      throw new Error(res.message);
+    }
+  
+    let positions = await response.json();
+    return positions.products;
   };
