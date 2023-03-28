@@ -1,46 +1,51 @@
-import style from './style.module.css';
+import style from "./style.module.css";
 import { useMutation } from "@tanstack/react-query";
-import { signIn } from '../../api/api';
-import { useNavigate,Link } from "react-router-dom";
+import { signInFetch } from "../../api/api";
+import { useNavigate, Link } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import * as Yup from 'yup';
+import * as Yup from "yup";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../redux/slices/user";
 
 const SignInSchema = Yup.object().shape({
   password: Yup.string()
-    .min(2, 'Too Short!')
-    .max(50, 'Too Long!')
-    .required('Required'),
-  email: Yup.string().email('Invalid email').required('Required'),
+    .min(2, "Too Short!")
+    .max(50, "Too Long!")
+    .required("Required"),
+  email: Yup.string().email("Invalid email").required("Required"),
 });
 
 export function Signin() {
-  
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const initialValues = {
-    password: '',
-    email: '',
-  }
+    password: "",
+    email: "",
+  };
 
-  const goToProducts = () => {
-  return navigate("/products");
-      };
-
-const { mutateAsync, isError, error } = useMutation({
+  const { mutateAsync } = useMutation({
     mutationFn: async (values) => {
-      await signIn(values);
-      goToProducts();
+      return signInFetch(values);
     },
   });
 
   const onSubmit = async (values) => {
-    await mutateAsync(values);
-  }
-  if (isError) return <p>Произошла ошибка: {error}</p>
+    const res = await mutateAsync(values);
+
+    dispatch(
+      setUser({
+        ...res.data,
+        token: res.token,
+      })
+    );
+    return navigate("/products");
+  };
 
   return (
     <div>
-    <h1>Вход в личный кабинет</h1>
-        <Formik 
+      <h1>Вход в личный кабинет</h1>
+      <Formik
         initialValues={initialValues}
         validationSchema={SignInSchema}
         onSubmit={onSubmit}
@@ -55,12 +60,22 @@ const { mutateAsync, isError, error } = useMutation({
           />
           <ErrorMessage name="email" />
           <label htmlFor="password">Пароль</label>
-          <Field id="password" name="password" type="password" placeholder="Пароль" />
+          <Field
+            id="password"
+            name="password"
+            type="password"
+            placeholder="Пароль"
+          />
           <ErrorMessage name="password" />
-          <button type="submit" className="btn btn-primary">Войти</button>
-          <p>У вас еще нет аккаута? <Link to={"/registration"}>Зарегистрироваться</Link> </p>
+          <button type="submit" className="btn btn-primary">
+            Войти
+          </button>
+          <p>
+            У вас еще нет аккаута?{" "}
+            <Link to={"/registration"}>Зарегистрироваться</Link>{" "}
+          </p>
         </Form>
       </Formik>
     </div>
-  )
+  );
 }
