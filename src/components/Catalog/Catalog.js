@@ -1,8 +1,13 @@
 import { Card, Space } from "antd";
 import style from "./card.module.css";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../redux/slices/cart";
 
 export function Catalog({ product }) {
   const { Meta } = Card;
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   return (
     <Space direction="horizontal" align="center" wrap>
@@ -22,7 +27,11 @@ export function Catalog({ product }) {
           <li>Цена товара:{product.price}p</li>
           <li>Скидка:{product.discount}%</li>
         </ul>
-        <button type="button" className="btn btn-outline-warning">
+        <button
+          type="button"
+          onClick={() => dispatch(addToCart(product._id))}
+          className="btn btn-outline-warning"
+        >
           В корзину
         </button>
       </Card>

@@ -2,8 +2,11 @@
     padding-top: 100px;
     display: flex; 
     flex-direction: column; 
-    background-color: rgb(255, 255, 255);
     align-items: center;
-
+    background-color: rgb(212, 240, 240);
 }
 
+.pageTitle {
+
+
+}

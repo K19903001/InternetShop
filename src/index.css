@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(212, 240, 240);
 }
 
 code {
@@ -21,12 +22,7 @@ footer {
   height: 10vh;
   background-color: rgb(19, 70, 37);
   color: rgb(241, 227, 227);
-  z-index: 1;
+  z-index: 0;
   align-items: center;
   }
 
-.card_text {
-  
-  
-
-}

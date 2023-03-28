@@ -11,6 +11,9 @@ import { Signin } from "./pages/Signin/Signin";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
 import { NotFound } from "./pages/notFound/notFound";
+import { Main } from "./pages/Main/Main";
+import { Cart } from "./pages/Cart/cart";
+import { Favorites } from "./pages/Favorites/Favorites";
 
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
@@ -18,6 +21,11 @@ const router = createBrowserRouter([
     path: "/",
     element: <App />,
     children: [
+      {
+        index: true,
+        path: "main",
+        element: <Main />,
+      },
       {
         path: "products",
         element: <Products />,
@@ -27,16 +35,24 @@ const router = createBrowserRouter([
         element: <Registration />,
       },
       {
-        path: "myPage",
+        path: "user/me",
         element: <InfoAboutMe />,
       },
       {
-        path: "/signin",
+        path: "signin",
         element: <Signin />,
       },
       {
         path: "*",
         element: <NotFound />,
+      },
+      {
+        path: "cart",
+        element: <Cart />,
+      },
+      {
+        path: "favorites",
+        element: <Favorites />,
       },
     ],
   },

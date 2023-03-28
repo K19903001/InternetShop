@@ -44,7 +44,7 @@ export function Signin() {
 
   return (
     <div>
-      <h1>Вход в личный кабинет</h1>
+      <h1 className={style.pageTitle}>Вход в личный кабинет</h1>
       <Formik
         initialValues={initialValues}
         validationSchema={SignInSchema}
