@@ -9,7 +9,6 @@ export const userSlice = createSlice({
       return action.payload;
     },
     removeUser: () => {
-      localStorage.clear();
       return initialUserState;
     },
   },

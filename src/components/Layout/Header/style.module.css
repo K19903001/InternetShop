@@ -8,17 +8,12 @@ header {
     z-index: 1;
     box-shadow: 3px 3px 5px rgb(0 0 0 / 50%);
     align-items: center;
-    justify-content: center;
-    gap: 420px;
- }
+    justify-content:flex-end;
+    gap: 280px;
+     }
 
 .btn_reg {
-   /* display: flex; */
-   align-items: center;
-   /* justify-content: flex-end; */
-   gap: 10px;
    padding-right: 20px;
-
  }
 
 .hederMenu {

@@ -3,14 +3,18 @@ import style from "./style.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { removeUser } from "../../../redux/slices/user";
 import { SearchInput } from "../../Search/Search";
+import { removeAllCart } from "../../../redux/slices/cart";
 
 export function Header() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.user);
   const cart = useSelector((state) => state.cart);
+
   const logOut = () => {
+    localStorage.clear();
     dispatch(removeUser());
+    dispatch(removeAllCart());
     navigate("/");
   };
 
@@ -29,7 +33,7 @@ export function Header() {
                   <Link to="/products">Products</Link>
                 </li>
                 <li>
-                  <Link to="/myPage">User</Link>
+                  <Link to="/user/me">User</Link>
                 </li>
                 <li>
                   <Link to="/cart">Корзина({cart.length})</Link>

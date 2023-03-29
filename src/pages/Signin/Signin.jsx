@@ -39,12 +39,12 @@ export function Signin() {
         token: res.token,
       })
     );
-    return navigate("/products");
+    return navigate("/main");
   };
 
   return (
-    <div>
-      <h1 className={style.pageTitle}>Вход в личный кабинет</h1>
+    <div className={style.pageSignIn}>
+      <h1>Вход в личный кабинет</h1>
       <Formik
         initialValues={initialValues}
         validationSchema={SignInSchema}

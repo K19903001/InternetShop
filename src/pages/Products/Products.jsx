@@ -5,6 +5,7 @@ import { getAllProductsWithSearch } from "../../api/api";
 import { useSelector } from "react-redux";
 import { useAuth } from "../../hooks/useAuth";
 import { NotFound } from "../../components/notFound/notFound";
+import style from "./style.module.css";
 
 export function Products() {
   const { token } = useAuth();
@@ -33,7 +34,7 @@ export function Products() {
 
   return (
     <>
-      <h1 className="text-center">Лакомства для вашего питомца</h1>
+      <h1 className={style.productTitle}>Лакомства для вашего питомца</h1>
       <div className="d-flex justify-content-center flex-row flex-wrap">
         {products.length ? (
           products.map((currentProduct) => {
