@@ -2,13 +2,23 @@ import { Card, Space } from "antd";
 import style from "./card.module.css";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/slices/cart";
+import { useNavigate } from "react-router-dom";
 
 export function Catalog({ product }) {
   const { Meta } = Card;
   const dispatch = useDispatch();
-
+  const handleAddToCart = (event) => {
+    dispatch(addToCart(product._id));
+    event.stopPropagation();
+  };
+  const navigate = useNavigate();
   return (
-    <Space direction="horizontal" align="center" wrap>
+    <Space
+      onClick={() => navigate(product._id)}
+      direction="horizontal"
+      align="center"
+      wrap
+    >
       <Card
         className={style.card_prod}
         cover={
@@ -22,21 +32,16 @@ export function Catalog({ product }) {
         <Meta title={product.name} />
         <ul className="card_text">
           <li>Количество:{product.stock}</li>
-          <li>Цена товара:{product.price}p</li>
+          <li>Цена товара:{product.price}pуб.</li>
           <li>Скидка:{product.discount}%</li>
         </ul>
         <button
-          type="button"
-          onClick={() => dispatch(addToCart(product._id))}
-          className="btn btn-outline-warning"
+          onClick={(event) => handleAddToCart(event)}
+          className="btn btn-warning"
         >
           В корзину
         </button>
-        <button
-          type="button"
-          // onClick={() => dispatch(addToCart(product._id))}
-          className="btn btn-primary"
-        >
+        <button type="button" className="btn btn-primary">
           В избранное
         </button>
       </Card>

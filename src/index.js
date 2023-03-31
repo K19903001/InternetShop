@@ -14,6 +14,7 @@ import { NotFound } from "./pages/notFound/notFound";
 import { Main } from "./pages/Main/Main";
 import { Cart } from "./pages/Cart/cart";
 import { Favorites } from "./pages/Favorites/Favorites";
+import { CurrentProduct } from "./pages/CurrentProduct/CurrentProduct";
 
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: "products",
         element: <Products />,
+      },
+      {
+        path: "products/:productId",
+        element: <CurrentProduct />,
       },
       {
         path: "registration",

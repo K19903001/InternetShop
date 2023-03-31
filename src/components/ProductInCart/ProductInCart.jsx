@@ -6,6 +6,7 @@ import {
   dicrementProduct,
   incrementProduct,
 } from "../../redux/slices/cart";
+import style from "./style.module.css";
 
 export const ProductInCart = ({
   product: { name, price, discount, _id, stock },
@@ -16,7 +17,7 @@ export const ProductInCart = ({
 
   return (
     <>
-      <li className="list-group-item d-flex justify-content-between align-items-center">
+      <li className={style.cartList}>
         <input
           type="checkbox"
           onChange={(event) =>

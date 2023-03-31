@@ -40,9 +40,7 @@ export const RealCart = () => {
   return (
     <div>
       <p>К оформлению:</p>
-      <ol className="list-group list-group-numbered">
-        {/* {productsChecked.map(element => <li className="list-group-item">{element.name} - </li>)} */}
-      </ol>
+      <ol className="list-group list-group-numbered"></ol>
       <p>Total:{totalPriceOfAll} </p>
     </div>
   );

@@ -59,56 +59,6 @@ export const signUpFetch = async (values) => {
   }
 };
 
-export const AuthMe = async () => {
-  if (localStorage.getItem("token") === undefined) {
-    return false;
-  }
-
-  try {
-    let response = await fetch(
-      "https://api.react-learning.ru/v2/9-gr/users/me",
-      {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + localStorage.getItem("token"),
-        },
-      }
-    );
-
-    if (response.ok === false) {
-      return false;
-    }
-
-    return true;
-  } catch (error) {
-    return false;
-  }
-};
-
-export const getSomeProduct = async (productID) => {
-  let response = await fetch(
-    `https://api.react-learning.ru/products/${productID}`,
-    {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + localStorage.getItem("token"),
-      },
-    }
-  );
-
-  if (response.ok === false) {
-    const res = await response.json();
-    throw new Error(res.message);
-  }
-
-  let product = await response.json();
-  return product;
-};
-
 export const getAllProductsWithSearch = (token, search) => {
   return fetch(
     `https://api.react-learning.ru/products/search?query=${search}`,

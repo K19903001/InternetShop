@@ -1,0 +1,21 @@
+.currentProductPage {
+    display: flex;
+    justify-content: center;
+    padding-top: 100px;
+    flex-direction: column;
+    
+}
+img {
+    max-width: 400px;
+    max-height: 300px;
+    
+}
+ h1 {
+display: flex;
+justify-content: center;
+ }
+
+.productInfo {
+    display: flex;
+    flex-direction: column;
+}
