@@ -13,7 +13,6 @@ import { store } from "./redux/store";
 import { NotFound } from "./pages/notFound/notFound";
 import { Main } from "./pages/Main/Main";
 import { Cart } from "./pages/Cart/cart";
-import { Favorites } from "./pages/Favorites/Favorites";
 import { CurrentProduct } from "./pages/CurrentProduct/CurrentProduct";
 
 const queryClient = new QueryClient();
@@ -54,10 +53,6 @@ const router = createBrowserRouter([
       {
         path: "cart",
         element: <Cart />,
-      },
-      {
-        path: "favorites",
-        element: <Favorites />,
       },
     ],
   },

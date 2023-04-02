@@ -41,9 +41,6 @@ export function Catalog({ product }) {
         >
           В корзину
         </button>
-        <button type="button" className="btn btn-primary">
-          В избранное
-        </button>
       </Card>
     </Space>
   );
